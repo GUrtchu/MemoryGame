@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './App.css';
+import "./App.css";
 
 const MemoryGameSetup = () => {
   const [selectedTheme, setSelectedTheme] = useState("Numbers");
@@ -20,7 +20,7 @@ const MemoryGameSetup = () => {
   };
 
   const themes = ["Numbers", "Icons"];
-  const timerOptions = [1, 3, 5]; 
+  const timerOptions = [1, 3, 5];
   const gridOptions = ["4x4", "6x6"];
 
   return (
@@ -35,7 +35,9 @@ const MemoryGameSetup = () => {
           {themes.map((theme) => (
             <button
               key={theme}
-              className={`option-btn ${selectedTheme === theme ? "selected" : ""}`}
+              className={`option-btn ${
+                selectedTheme === theme ? "selected" : ""
+              }`}
               onClick={() => setSelectedTheme(theme)}
             >
               {theme}
@@ -50,7 +52,9 @@ const MemoryGameSetup = () => {
           {timerOptions.map((minutes) => (
             <button
               key={minutes}
-              className={`option-btn ${timerDuration === minutes ? "selected" : ""}`}
+              className={`option-btn ${
+                timerDuration === minutes ? "selected" : ""
+              }`}
               onClick={() => setTimerDuration(minutes)}
             >
               {minutes}min
@@ -65,7 +69,9 @@ const MemoryGameSetup = () => {
           {gridOptions.map((size) => (
             <button
               key={size}
-              className={`option-btn ${selectedGrid === size ? "selected" : ""}`}
+              className={`option-btn ${
+                selectedGrid === size ? "selected" : ""
+              }`}
               onClick={() => setSelectedGrid(size)}
             >
               {size}
