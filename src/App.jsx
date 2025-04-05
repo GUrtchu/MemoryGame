@@ -1,74 +1,16 @@
-import React, { useState } from "react";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MemoryGameSetup from "./MemoryGameSetup";  
+import MemoryGame from "./MemoryGame";  
 
-const MemoryGameSetup = () => {
-  const [selectedTheme, setSelectedTheme] = useState("Numbers");
-  const [timerDuration, setTimerDuration] = useState(1);
-  const [selectedGrid, setSelectedGrid] = useState("4x4");
-
-  const themes = ["Numbers", "Icons"];
-  const timerOptions = [1, 3, 5]; 
-  const gridOptions = ["4x4", "6x6"];
-
-
-
+function App() {
   return (
-    
-    <div className="setup-container">
-      <header>
-      <h1>Memory Game</h1>
-      </header>
-
-      <section className="option-section">
-        <h3>Select Theme</h3>
-        <div className="option-buttons">
-          {themes.map((theme) => (
-            <button
-              key={theme}
-              className={`option-btn ${selectedTheme === theme ? "selected" : ""}`}
-              onClick={() => setSelectedTheme(theme)}
-            >
-              {theme}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section className="option-section">
-        <h3>Timer Duration</h3>
-        <div className="option-buttons">
-          {timerOptions.map((minutes) => (
-            <button
-              key={minutes}
-              className={`option-btn ${timerDuration === minutes ? "selected" : ""}`}
-              onClick={() => setTimerDuration(minutes)}
-            >
-              {minutes}min
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section className="option-section">
-        <h3>Grid Size</h3>
-        <div className="option-buttons">
-          {gridOptions.map((size) => (
-            <button
-              key={size}
-              className={`option-btn ${selectedGrid === size ? "selected" : ""}`}
-              onClick={() => setSelectedGrid(size)}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <button className="start-button">
-        Start Game
-      </button>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MemoryGameSetup />} />  
+        <Route path="/game" element={<MemoryGame />} />  
+      </Routes>
+    </Router>
   );
-};
+}
 
-export default MemoryGameSetup;
+export default App;
